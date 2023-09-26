@@ -13,6 +13,12 @@ namespace ContosoPizza.Pages
     [BindProperty]
     public Pizza NewPizza { get; set; } = default!;
 
+    public IActionResult OnPostDelete(int id)
+{
+    _service.DeletePizza(id);
+
+    return RedirectToAction("Get");
+}
     public IActionResult OnPost()
     {
         if(!ModelState.IsValid || NewPizza == null)
